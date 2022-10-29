@@ -57,13 +57,13 @@ export function displayEditPage(req, res, next) {
 export function processEditPage(req, res, next) {
     let id = req.params.id;
 
-    let newBook = booksModel({
+    let newBook = {
         title: req.body.title,
         author: req.body.author,
         published: req.body.published,
         description: req.body.description,
         price: req.body.price,
-    });
+    };
 
     booksModel.updateOne({ _id: id }, newBook, (err, books) => {
         if (err) {
@@ -84,7 +84,6 @@ export function processDelete(req, res, next) {
             console.error(err);
             res.end(err);
         }
-
         res.redirect('/books/list');
     })
 }
