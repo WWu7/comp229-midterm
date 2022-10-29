@@ -25,7 +25,7 @@ export function processAddPage(req, res, next) {
     let newBook = booksModel({
         title: req.body.title,
         author: req.body.author,
-        year: req.body.year,
+        published: req.body.published,
         description: req.body.description,
         price: req.body.price,
     });
@@ -60,7 +60,7 @@ export function processEditPage(req, res, next) {
     let newBook = booksModel({
         title: req.body.title,
         author: req.body.author,
-        year: req.body.year,
+        published: req.body.published,
         description: req.body.description,
         price: req.body.price,
     });
