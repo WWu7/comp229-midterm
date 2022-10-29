@@ -4,9 +4,6 @@
             <h1>
                 <%= title %>
             </h1>
-            <!-- ------------------------ -->
-            <!-- FIX THE ADD BUTTON BELOW -->
-            <!-- ------------------------ -->
             <a href="/books/add" class="btn btn-primary" role="button">
                 <i class="fas fa-plus-circle"></i> Add a Book</a>
             <br>
@@ -42,8 +39,8 @@
                             <%= books[count].price %>
                         </td>
                         <td class="text-center col-1">
-                            <a href="/books/add" class="btn btn-primary" role="button">
-                                <i class="fas fa-plus-circle"></i> Add a Book</a>
+                            <a href="/books/edit/<%= books[count]._id %>" class="btn btn-primary" role="button">
+                                <i class="fas fa-plus-circle"></i>Edit Book</a>
                         </td>
                         <td class="text-center col-1">
                             <!-- ------------------------ -->
