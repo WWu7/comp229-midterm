@@ -22,7 +22,7 @@ export function displayAddPage(req, res, next) {
 // POST process the Book Details page and create a new Book - CREATE
 export function processAddPage(req, res, next) {
 
-    let newBook = bookModel({
+    let newBook = booksModel({
         title: req.body.title,
         author: req.body.author,
         year: req.body.year,
@@ -30,7 +30,7 @@ export function processAddPage(req, res, next) {
         price: req.body.price,
     });
 
-    bookModel.create(newbook, (err, books) => {
+    booksModel.create(newBook, (err, books) => {
         if(err){
             console.error(err);
             res.end(err);
@@ -42,15 +42,16 @@ export function processAddPage(req, res, next) {
 
 // GET the Book Details page in order to edit an existing Book
 export function displayEditPage(req, res, next) {
-
-    res.render('index', { title: 'Edit Book Info', page: 'books/edit', books: booksCollection});
+    let id = req.params.id;
+    res.render('index', { title: 'Edit Book Info', page: 'books/edit', books: booksCollection, id});
     };    
 
 
 // POST - process the information passed from the details form and update the document
 export function processEditPage(req, res, next) {
-    
-    let newBook = bookModel({
+    let id = req.params.id;
+
+    let newBook = booksModel({
         title: req.body.title,
         author: req.body.author,
         year: req.body.year,
@@ -58,7 +59,7 @@ export function processEditPage(req, res, next) {
         price: req.body.price,
     });
 
-    bookModel.updateOne({_id: id }, newBook, (err, books) => {
+    booksModel.updateOne({_id: id }, newBook, (err, books) => {
         if(err){
             console.error(err);
             res.end(err);
@@ -72,7 +73,7 @@ export function processEditPage(req, res, next) {
 export function processDelete(req, res, next) {
     let id = req.params.id;
 
-    bookModel.remove({_id: id}, (err) => {
+    booksModel.remove({_id: id}, (err) => {
         if (err){
             console.error(err);
             res.end(err);
